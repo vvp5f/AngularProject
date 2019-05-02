@@ -1,0 +1,40 @@
+<h1>To-Go Orders</h1>
+<table class="table">
+  <thead>
+      <!-- <script type = "text/javascript">
+        order = angular.module('order', []);
+        order.controller('MyCtrl', function($scope){
+          $scope.myOrder = [];
+      
+          $scope.removeOrder = function(order){
+            $scope.myOrder.splice($scope.myOrder.indexOf(order));
+          }
+        })
+        </script> -->
+      
+    <tr>
+      <th>Customer</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Order Details</th>
+      <th>Delete</th>
+      <th></th>
+    </tr>
+  </thead> 
+  <tbody>
+  <tr *ngFor="let order of orders$ | async">
+      <td>{{ order.shipping.name }}</td>
+      <td>{{ order.datePlaced | date}}</td>
+      <td>{{ order.timePlaced }}</td>
+      <td>
+      <a routerLink="/my-orderdetails">View</a>
+       </td>
+       <button ng-click="removeRecord(user)">Delete</button>
+      <!-- <td><a href="#" ng-click="delete(order)">Remove</a></td> -->
+   
+  <!-- <button type="button" (click)="delete()" class="btn btn-danger">Delete</button> -->
+     
+    </tr>
+  </tbody> 
+</table>
+

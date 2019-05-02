@@ -1,0 +1,102 @@
+<div class="col-md-6 col-md-offset-3">
+    <h2>Sign up</h2>
+    <form name="form" ng-submit="vm.register()" role="form">
+        <div class="form-group" ng-class="{ 'has-error': form.firstName.$dirty && form.firstName.$error.required }">
+            <label for="username">First name</label>
+            <input type="text" name="firstName" id="firstName" class="form-control" ng-model="vm.user.firstName" required />
+            <span *ngIf="form.firstName.$dirty && form.firstName.$error.required" class="help-block">First name is required</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.lastName.$dirty && form.lastName.$error.required }">
+            <label for="username">Last name</label>
+            <input type="text" name="lastName" id="Text1" class="form-control" ng-model="vm.user.lastName" required />
+            <span *ngIf="form.lastName.$dirty && form.lastName.$error.required" class="help-block">Last name is required</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" class="form-control" ng-model="vm.user.username" required />
+            <span *ngIf="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
+        </div>
+
+        <div class="form-group">
+            <label for="">Address</label>
+            <input #addressLine1="ngModel" name="addressLine1" [(ngModel)]="shipping.addressLine1" type="text" class="form-control" placeholder=" " required>
+            <div class="alert alert-danger" *ngIf="addressLine1.touched && addressLine1.invalid">
+              <div *ngIf="addressLine1.errors.required">Address Line is required.</div>
+            </div>
+          </div>
+        
+          <div class="form-group">
+              <label for="">Phone number</label>
+              <input #tel="ngModel" name="tel" [(ngModel)]="signup.tel" type="number" class="form-control" placeholder=" " required>
+              
+                <div class="alert alert-danger" *ngIf="tel.touched && tel.invalid">
+                <div *ngIf="tel.errors.required">Phone number is required.</div>
+            </div>
+          </div>
+
+       
+        <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" class="form-control" ng-model="vm.user.password" required />
+            <span *ngIf="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+        </div>
+        <div class="form-actions">
+            <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Sign up</button>
+            <!-- <img ng-if="vm.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" /> -->
+            <a href="#!/login" class="btn btn-link">Cancel</a>
+        </div>
+    </form>
+
+    
+</div>
+
+
+<!-- <div class="col-md-6 col-md-offset-3">
+    <h2>Sign up</h2>
+
+                        
+                       <div class="form-group">
+                       <label margin='50%' for="inputFirstName">First Name :  </label> 
+                       <input onChange ={this.signUpSubmitHandler}  placeholder="  " />
+                       </div>
+
+                       <div class="form-group">
+                       <label for="inputLastName">Last Name : </label>
+                       <input onChange ={this.signUpSubmitHandler} placeholder="  " />
+                       </div>
+
+                        <div class="form-group">
+                        <label for="inputAge" >Age : </label>  {/*className="sr-only"*/}
+                        <input onChange ={this.signUpSubmitHandler} value={this.state.age} name="age" type="text" placeholder="Age" />
+                        </div>
+
+                          <div class="form-group">
+                          <label for="inputPhoneNumber">Phone Number : </label>
+                          <label for="inputPhoneNumber" className="sr-only">Phone Number  </label>
+                          <input onChange ={this.signUpSubmitHandler} placeholder="   " />
+                          </div>
+                        
+                         <div class="form-group">
+                         <label for="inputEmailAddress">Email address :  </label>
+                         <input onChange ={this.signUpSubmitHandler} placeholder="  " />
+                         </div>
+
+                         <div class="form-group">
+                        <label for="inputPassword" >Password : </label>
+                        <input onChange = {this.signUpSubmitHandler } value={this.state.password} id ="inputPassword" name="password" type ="password" placeholder="Password"/>
+                        
+                     
+                        <div className="checkbox mb-3">
+                        <div className="mt-2"></div>
+                        <input type="checkbox" value="remember-me"/> Remember me
+                        </div>   
+                        </div>
+ 
+                         <button className="btn btn-lg btn-primary btn-lg" type="submit">Sign Up</button>
+                         
+                        {/*   <button className="btn btn-lg btn-primary btn-block" type="submit">Continue as Guest</button> */}       
+                         <p className="mt-5 mb-3 text-muted">&copy; 2017-2019</p>
+                     </form>
+                   
+    
+</div> -->
